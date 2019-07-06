@@ -77,7 +77,6 @@ function applyMove(grid,move, turn) {
   }
 
   function moveCount(grid){
-    //receives a grid and returns the number of moves that have been played.
     let moveCount = 0
     for (let i = 0; i<grid.length; i++){
       for (let j = 0 ; j<grid[i].length ; j++){
@@ -90,7 +89,6 @@ function applyMove(grid,move, turn) {
   }
 
 function getResult(grid,turn){
-    // receives a grid, and the turn of the player and returns an object with the result and an array of the winning line
     let result = RESULT.incomplete
     if (moveCount(grid)<5){
        return {result}
@@ -103,7 +101,6 @@ function getResult(grid,turn){
     let line
     let winningLine=[]
 
-    //first we check row, then column, then diagonal
     for (var i = 0 ; i<3 ; i++){
       line = grid[i].join('')
       if(succession(line)){
@@ -139,7 +136,6 @@ function getResult(grid,turn){
       return {result: result === 'X' ? 1 : 2, winningLine};
     }
 
-    //Check for tie
     if (moveCount(grid)==9){
       result=RESULT.tie
       return {result: result === 'X' ? 1 : 2, winningLine}
@@ -167,7 +163,6 @@ function getResult(grid,turn){
       turn = turn === 'X' ? 'O' : 'X';
     //   renderMainGrid()
     } else {
-      //Increment score and show result
       if(result !== RESULT.tie) {
         console.log(`${result} won`)
         
@@ -194,7 +189,6 @@ function getResult(grid,turn){
 function getBestMove (grid, turn){
 
     function getAvailableMoves (grid) {
-      // Receives a grid, and returns an array of available moves.
       let availableMoves = []
       for (let row = 0 ; row<3 ; row++){
         for (let column = 0 ; column<3 ; column++){
@@ -210,7 +204,6 @@ function getBestMove (grid, turn){
     let availableMovesAndScores = []
 
     for (let i = 0 ; i<availableMoves.length ; i++){
-      // Iterates over each available move. If it finds a winning move it returns it immediately. Otherwise it pushes a move and a score to the availableMovesAndScores array.
       let move = availableMoves[i]
       let newGrid = cloneGrid(grid)
       newGrid = applyMove(newGrid,move, turn)
