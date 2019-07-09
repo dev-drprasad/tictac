@@ -50,3 +50,15 @@
     border-radius: 5px;
     line-height: 100px;
 }
+
+#grid {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    justify-content: center;
+}
+
+#result {
+    text-align: center;
+    margin: 30px;
+}
